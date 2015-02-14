@@ -19,7 +19,7 @@ import com.maple.test.service.MemberService;
  */
 @Controller
 public class MemberController {
-	
+
 	@Autowired
 	private MemberService memberService;
 
@@ -27,20 +27,21 @@ public class MemberController {
 	public String getJoinForm() {
 		return "joinForm";
 	}
-	
+
 	@RequestMapping("/join")
 	public String join(Member member) {
 		memberService.join(member);
 		return "redirect:/login/form";
 	}
-	
+
 	@RequestMapping("/login/form")
 	public String getLoginForm(Member member) {
 		return "loginForm";
 	}
-	
+
 	@RequestMapping("/login")
 	public String login(Member member) {
+
 		memberService.login(member);
 		return "loginForm";
 	}

@@ -9,6 +9,7 @@ package com.maple.test.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.maple.test.mapper.MemberMapper;
 import com.maple.test.model.Member;
@@ -23,12 +24,14 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper memberMapper;
 	
 	@Override
+	@Transactional
 	public void join(Member member) {
 		
 		memberMapper.insertMember(member);
 	}
 
 	@Override
+	@Transactional
 	public void login(Member member) {
 		
 		member = memberMapper.selectMember(member);
